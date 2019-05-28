@@ -1,1 +1,1 @@
-# Python learn notegt
+# Python learn note
