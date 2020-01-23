@@ -30,6 +30,12 @@ class Person(object):
         else:
             print("%s正在玩飞行棋" % self._name)
 
+    def watch_av(self):
+        if self._age >= 18:
+            print("%s正在观看爱情动作片" % self._name)
+        else:
+            print("%s只能观看熊出没" % self._name)
+
 
 class Triangle(object):
     def __init__(self, a, b, c):
@@ -80,6 +86,40 @@ class Clock(object):
         print("%02d:%02d:%02d" % (self._hour, self._minute, self._second))
 
 
+class Student(Person):
+    def __init__(self, name, age, grade):
+        super(Student, self).__init__(name, age)
+        self._grade = grade
+
+    @property
+    def grade(self):
+        return self._grade
+
+    @grade.setter
+    def grade(self, grade):
+        self._grade = grade
+
+    def study(self, course):
+        print("%s的%s正在学习%s" % (self._grade, self._name, course))
+
+
+class Teacher(Person):
+    def __init__(self, name, age, title):
+        super().__init__(name, age)
+        self._title = title
+
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, title):
+        self._title = title
+
+    def teach(self, course):
+        print("%s%s正在讲%s" % (self._name, self._title, course))
+
+
 def use_triangle():
     a, b, c = 3, 4, 5
     if Triangle.is_vaild(a, b, c):
@@ -98,6 +138,15 @@ def use_time():
         clock.run()
 
 
+def use_teacher():
+    stu = Student("王大锤", 15, "初三")
+    stu.study("数学")
+    stu.watch_av()
+    t = Teacher("球球", 19, "教授")
+    t.teach("Java基础")
+    t.watch_av()
+
+
 def main():
     person = Person("王大锤", 12)
     print(person.name)
@@ -107,4 +156,4 @@ def main():
 
 
 if __name__ == "__main__":
-    use_time()
+    use_teacher()
