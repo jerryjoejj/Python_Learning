@@ -30,7 +30,7 @@ def main():
         data = b64encode(f.read()).decode('utf-8')
     while True:
         client, addr = server.accept()
-        FileTransferHandler(client,data).start()
+        FileTransferHandler(client, data).start()
 
 
 if __name__ == '__main__':
